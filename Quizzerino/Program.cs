@@ -10,12 +10,22 @@ namespace Quizzerino
     {
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
+            ChoiceQuestion first = new ChoiceQuestion();
+            first.setText("What was the original name of the Java language?");
+            first.addChoice("*7", false);
+            first.addChoice("Duke", false);
+            first.addChoice("Oak", true);
+            first.addChoice("Gosling", false);
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app!
+            
+            presentQuestion(first);
+        }
+        public static void presentQuestion(ChoiceQuestion q)
+        {
+            q.display();
+            Console.Write("Your answer: ");
+            String response = Console.ReadLine();
+            Console.WriteLine(q.checkAnswer(response));    // checkt of het overeenkomt
         }
     }
 }
